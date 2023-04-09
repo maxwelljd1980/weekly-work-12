@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/SECensusdatagdbSECensusdatagdba0000000agdbtable_1.js"></script>
+        <script src="data/SECensusdatagdbSECensusdatagdba00000009gdbtable_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[23.70636202643633,-100.77437999066366],[40.49373931525519,-69.90806604308341]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            map.setMaxBounds(map.getBounds());
+        }
+        map.createPane('pane_ESRI_0');
+        map.getPane('pane_ESRI_0').style.zIndex = 400;
+        var layer_ESRI_0 = L.tileLayer('https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            pane: 'pane_ESRI_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_ESRI_0;
+        map.addLayer(layer_ESRI_0);
+        function pop_SECensusdatagdbSECensusdatagdba0000000agdbtable_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COUNTY'] !== null ? autolinker.link(feature.properties['COUNTY'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">Total Population:' + (feature.properties['TOTPOP'] !== null ? autolinker.link(feature.properties['TOTPOP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">Average Population per Square Mile:' + (feature.properties['POPDENS'] !== null ? autolinker.link(feature.properties['POPDENS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SECensusdatagdbSECensusdatagdba0000000agdbtable_1_0(feature) {
+            if (feature.properties['POPDENS'] >= 1.120000 && feature.properties['POPDENS'] <= 9.260000 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(13,115,32,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['POPDENS'] >= 9.260000 && feature.properties['POPDENS'] <= 13.860000 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(36,123,52,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['POPDENS'] >= 13.860000 && feature.properties['POPDENS'] <= 18.140000 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(59,130,73,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['POPDENS'] >= 18.140000 && feature.properties['POPDENS'] <= 25.350000 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(82,138,94,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['POPDENS'] >= 25.350000 && feature.properties['POPDENS'] <= 35.138750 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(105,146,114,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['POPDENS'] >= 35.138750 && feature.properties['POPDENS'] <= 59.040000 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,153,135,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['POPDENS'] >= 59.040000 && feature.properties['POPDENS'] <= 136.140000 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(151,161,155,1.0)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['POPDENS'] >= 136.140000 && feature.properties['POPDENS'] <= 3708.290000 ) {
+                return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(173,168,176,1.0)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1');
+        map.getPane('pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1').style.zIndex = 401;
+        map.getPane('pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1').style['mix-blend-mode'] = 'normal';
+        var layer_SECensusdatagdbSECensusdatagdba0000000agdbtable_1 = new L.geoJson(json_SECensusdatagdbSECensusdatagdba0000000agdbtable_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+            layerName: 'layer_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+            pane: 'pane_SECensusdatagdbSECensusdatagdba0000000agdbtable_1',
+            onEachFeature: pop_SECensusdatagdbSECensusdatagdba0000000agdbtable_1,
+            style: style_SECensusdatagdbSECensusdatagdba0000000agdbtable_1_0,
+        });
+        bounds_group.addLayer(layer_SECensusdatagdbSECensusdatagdba0000000agdbtable_1);
+        map.addLayer(layer_SECensusdatagdbSECensusdatagdba0000000agdbtable_1);
+        function pop_SECensusdatagdbSECensusdatagdba00000009gdbtable_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['state'] !== null ? autolinker.link(feature.properties['state'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Length'] !== null ? autolinker.link(feature.properties['Shape_Length'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SECensusdatagdbSECensusdatagdba00000009gdbtable_2_0() {
+            return {
+                pane: 'pane_SECensusdatagdbSECensusdatagdba00000009gdbtable_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: false,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,182,111,0.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_SECensusdatagdbSECensusdatagdba00000009gdbtable_2');
+        map.getPane('pane_SECensusdatagdbSECensusdatagdba00000009gdbtable_2').style.zIndex = 402;
+        map.getPane('pane_SECensusdatagdbSECensusdatagdba00000009gdbtable_2').style['mix-blend-mode'] = 'normal';
+        var layer_SECensusdatagdbSECensusdatagdba00000009gdbtable_2 = new L.geoJson(json_SECensusdatagdbSECensusdatagdba00000009gdbtable_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_SECensusdatagdbSECensusdatagdba00000009gdbtable_2',
+            layerName: 'layer_SECensusdatagdbSECensusdatagdba00000009gdbtable_2',
+            pane: 'pane_SECensusdatagdbSECensusdatagdba00000009gdbtable_2',
+            onEachFeature: pop_SECensusdatagdbSECensusdatagdba00000009gdbtable_2,
+            style: style_SECensusdatagdbSECensusdatagdba00000009gdbtable_2_0,
+        });
+        bounds_group.addLayer(layer_SECensusdatagdbSECensusdatagdba00000009gdbtable_2);
+        map.addLayer(layer_SECensusdatagdbSECensusdatagdba00000009gdbtable_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/SECensusdatagdbSECensusdatagdba00000009gdbtable_2.png" /> State Borders': layer_SECensusdatagdbSECensusdatagdba00000009gdbtable_2,'Population Per Square Mile<br /><table><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_11930.png" /></td><td>1.1 - 9.3</td></tr><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_931391.png" /></td><td>9.3 - 13.9</td></tr><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_1391812.png" /></td><td>13.9 - 18.1</td></tr><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_1812543.png" /></td><td>18.1 - 25.4</td></tr><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_2543514.png" /></td><td>25.4 - 35.1</td></tr><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_351595.png" /></td><td>35.1 - 59</td></tr><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_5913616.png" /></td><td>59 - 136.1</td></tr><tr><td style="text-align: center;"><img src="legend/SECensusdatagdbSECensusdatagdba0000000agdbtable_1_1361370837.png" /></td><td>136.1 - 3708.3</td></tr></table>': layer_SECensusdatagdbSECensusdatagdba0000000agdbtable_1,"Basemap": layer_ESRI_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
